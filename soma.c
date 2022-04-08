@@ -19,7 +19,7 @@ int somaBinario(int decimal1, int decimal2){
 
         for(int i = 0; i <= 15; i++){
             soma[i] = carry + binario1[i] + binario2[i];
-            printf("\n%d + %d = %d carry = %d", binario1[i], binario2[i], soma[i], carry);
+            // printf("\n%d + %d = %d carry = %d", binario1[i], binario2[i], soma[i], carry);
             if(soma[i] == 2){
                 carry = 1;
                 soma[i] = 0;
@@ -31,14 +31,14 @@ int somaBinario(int decimal1, int decimal2){
             }
         }
 
+        soma[15] = binario1[15];
+
         printf("\nResultado da soma: ");
         for(int i = 15; i >= 0; i--){
             printf("%d", soma[i]);
         }
 
-        binarioVetorDecimal(soma);
-
-        return 0;
+        return binarioVetorDecimal(soma);
 
     }else{
 
@@ -46,18 +46,18 @@ int somaBinario(int decimal1, int decimal2){
         if(abs(decimal1) < abs(decimal2)){ // verifica quem tem maior magnitude
             if(decimal2 < 0){
                 decimal2 = decimal2 * -1;
-                subtracaoBinario(decimal1, decimal2);
+                return subtracaoBinario(decimal1, decimal2);
             }else{
                 decimal1 = decimal1 * -1;
-                subtracaoBinario(decimal2, decimal1);
+                return subtracaoBinario(decimal2, decimal1);
             }
         }else{
             if(decimal1 < 0){
                 decimal1 = decimal1 * -1;
-                subtracaoBinario(decimal2, decimal1);
+                return subtracaoBinario(decimal2, decimal1);
             }else{
                 decimal2 = decimal2 * -1;
-                subtracaoBinario(decimal1, decimal2);
+                return subtracaoBinario(decimal1, decimal2);
             }
         }
 

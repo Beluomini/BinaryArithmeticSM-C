@@ -4,6 +4,7 @@
 # include "tools.c"
 # include "soma.c"
 # include "subtracao.c"
+# include "test.c"
 
 int main(){
     int decimal1 = 0;
@@ -11,6 +12,8 @@ int main(){
     int operacao = 0;
     int binario1[16] = {0};
     int binario2[16];
+
+    return test();
 
     printf("\nDigite o primeiro numero decimal: ");
     scanf("%d", &decimal1);
@@ -31,9 +34,7 @@ int main(){
         somaBinario(decimal1, decimal2);
     }
     else if(operacao == 2){
-        printf("\nSubtracao entre valores positivos %d e %d\n", decimal1, decimal2);
         subtracaoBinario(decimal1, decimal2);
-
     }
     else if(operacao == 3){
         printf("\nResultado: %d", decimal1 * decimal2);
@@ -44,6 +45,8 @@ int main(){
     else{
         printf("\nOperacao invalida");
     }
+
+    printf("\n Programa finalizado :)");
 
 }
 
