@@ -1,0 +1,6 @@
+Soma em sinal e magnitude: 
+    - Verificar o sinal das parcelas a serem somadas; 
+        • Se forem iguais, repetir o sinal e somar as magnitudes; 
+        • Se forem diferentes: o verificar qual parcela tem a maior magnitude; 
+            > repetir o sinal da maior magnitude; 
+            > subtrair a menor magnitude da maior magnitude.
