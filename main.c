@@ -4,6 +4,7 @@
 # include "tools.c"
 # include "soma.c"
 # include "subtracao.c"
+# include "divisao.c"
 # include "test.c"
 
 int main(){
@@ -30,11 +31,20 @@ int main(){
     printf("\nDigite o segundo numero decimal: ");
     scanf("%d", &decimal2);
 
+    int resultado[16] = {0};
     if(operacao == 1){
-        somaBinario(decimal1, decimal2);
+        somaBinario(decimal1, decimal2, resultado);
+        printf("\nResultado da soma: ");
+        for(int i = 15; i >= 0; i--){
+            printf("%d", resultado[i]);
+        }
     }
     else if(operacao == 2){
-        subtracaoBinario(decimal1, decimal2);
+        subtracaoBinario(decimal1, decimal2, resultado);
+        printf("\nResultado da subtracao: ");
+        for(int i = 15; i >= 0; i--){
+            printf("%d", resultado[i]);
+        }
     }
     else if(operacao == 3){
         printf("\nResultado: %d", decimal1 * decimal2);

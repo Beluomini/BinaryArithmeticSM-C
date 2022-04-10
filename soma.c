@@ -2,15 +2,15 @@
 # include <string.h>
 # include <time.h>
 
-int somaBinario(int decimal1, int decimal2){
+int somaBinario(int decimal1, int decimal2, int *soma){
     int binario1[16] = {0};
     int binario2[16] = {0};
-    int soma[16] = {0};
+    zerarBinario(soma);
     int resto = 0;
     int posicao = 0;
     int carry = 0;
 
-    if((decimal1 < 0 && decimal2 < 0) || (decimal1 > 0 && decimal2 > 0)){
+    if((decimal1 <= 0 && decimal2 <= 0) || (decimal1 >= 0 && decimal2 >= 0)){
 
         printf("\nSoma entre valores do mesmo sinal %d e %d (soma e mantem o sinal)\n", decimal1, decimal2);
         
@@ -33,31 +33,27 @@ int somaBinario(int decimal1, int decimal2){
 
         soma[15] = binario1[15];
 
-        printf("\nResultado da soma: ");
-        for(int i = 15; i >= 0; i--){
-            printf("%d", soma[i]);
-        }
-
         return binarioVetorDecimal(soma);
 
     }else{
 
         printf("\nSoma entre valores de sinal diferente %d e %d (subtrai os modulos e mantem o sinal do maior)\n", decimal1, decimal2);
+        int resultado[16] = {0};
         if(abs(decimal1) < abs(decimal2)){ // verifica quem tem maior magnitude
             if(decimal2 < 0){
                 decimal2 = decimal2 * -1;
-                return subtracaoBinario(decimal1, decimal2);
+                return subtracaoBinario(decimal1, decimal2, resultado);
             }else{
                 decimal1 = decimal1 * -1;
-                return subtracaoBinario(decimal2, decimal1);
+                return subtracaoBinario(decimal2, decimal1, resultado);
             }
         }else{
             if(decimal1 < 0){
                 decimal1 = decimal1 * -1;
-                return subtracaoBinario(decimal2, decimal1);
+                return subtracaoBinario(decimal2, decimal1, resultado);
             }else{
                 decimal2 = decimal2 * -1;
-                return subtracaoBinario(decimal1, decimal2);
+                return subtracaoBinario(decimal1, decimal2, resultado);
             }
         }
 

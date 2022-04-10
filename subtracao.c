@@ -3,10 +3,10 @@
 # include <time.h>
 # include <math.h>
 
-int subtracaoBinario(int decimal1, int decimal2){
+int subtracaoBinario(int decimal1, int decimal2, int *subtracao){
     int binario1[16] = {0};
     int binario2[16] = {0};
-    int subtracao[16] = {0};
+    zerarBinario(subtracao);
     int resto = 0;
     int posicao = 0;
     int carry = 0;
@@ -43,11 +43,6 @@ int subtracaoBinario(int decimal1, int decimal2){
                 carry = 0;
             }
         }
-
-        printf("\nResultado da subtracao: ");
-        for(int i = 15; i >= 0; i--){
-            printf("%d", subtracao[i]);
-        }
         
         return binarioVetorDecimal(subtracao);
 
@@ -59,10 +54,10 @@ int subtracaoBinario(int decimal1, int decimal2){
             maior = decimal2;
             menor = decimal1;
             maior = maior * -1;
-            return somaBinario(maior, menor);
+            return somaBinario(maior, menor, subtracao);
         }else{
             menor = menor * -1;
-            return somaBinario(maior, menor);
+            return somaBinario(maior, menor, subtracao);
         }
 
     }
