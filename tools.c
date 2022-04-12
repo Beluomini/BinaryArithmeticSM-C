@@ -1,6 +1,12 @@
-int decimalBinarioVetor(int decimal, int *binario){
+# include <stdio.h>
+# include <string.h>
+# include <time.h>
+
+#define TAM_BINARIO 16
+
+int decimalBinarioVetor(int decimal, int *binario, int tamanho){
     if(decimal < 0){
-        binario[15] = 1;
+        binario[tamanho-1] = 1;
         decimal = decimal * -1;
     }else if(decimal == 0){
         return 0;
@@ -17,29 +23,29 @@ int decimalBinarioVetor(int decimal, int *binario){
     binario[posicao] = resto;
 
     // printf("\nO decimal %d eh: ", decimal);
-    // for(int i = 15; i >= 0; i--){
+    // for(int i = tamanho-1; i >= 0; i--){
     //     printf("%d", binario[i]);
     // }
 
     return 0;
 }
 
-int binarioVetorDecimal(int *binario){
+int binarioVetorDecimal(int *binario, int tamanho){
     int posicao = 0;
     int decimal = 0;
 
-    for(int i = 0; i < 15; i++){
+    for(int i = 0; i < tamanho-1; i++){
         if(binario[i] == 1){
             decimal = decimal + pow(2, i);
         }
     }
     
-    if(binario[15] == 1){
+    if(binario[tamanho-1] == 1){
         decimal = decimal * -1;
     }
 
     // printf("\nO binario ");
-    // for(int i = 15; i >= 0; i--){
+    // for(int i = tamanho-1; i >= 0; i--){
     //     printf("%d", binario[i]);
     // }
     // printf(" eh: %d\n", decimal);
@@ -47,8 +53,9 @@ int binarioVetorDecimal(int *binario){
     return decimal;
 }
 
-int zerarBinario(int *binario){
-    for(int i = 0; i < 16; i++){
+
+int zerarBinario(int *binario, int tamanho){
+    for(int i = 0; i < tamanho; i++){
         binario[i] = 0;
     }
     return 0;
@@ -73,4 +80,10 @@ int copiaBinario(int *binario1, int *binario2){
         binario1[i] = binario2[i];
     }
     return 0;
+}
+
+int imprimeBinario(int *binario, int tamanho){
+    for(int i = tamanho-1; i >= 0; i--){
+        printf("%d", binario[i]);
+    }
 }
