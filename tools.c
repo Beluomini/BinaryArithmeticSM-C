@@ -87,3 +87,13 @@ int imprimeBinario(int *binario, int tamanho){
         printf("%d", binario[i]);
     }
 }
+
+int imprimeBinarioSM(int *binario, int tamanho){
+    for(int i = tamanho-1; i >= 0; i--){
+        if(i == tamanho-1){
+            printf("(%d)", binario[i]);
+        }else{
+            printf("%d", binario[i]);
+        }
+    }
+}
