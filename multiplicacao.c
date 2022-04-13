@@ -8,7 +8,7 @@ int multiplicacaoBinario(int decimal1, int decimal2, int *produto){
     int aux[TAM_BINARIO] = {0};
     zerarBinario(produto, TAM_BINARIO*2);
     int carry = 0;
-    int posicao = 15;
+    int posicao = TAM_BINARIO-1;
 
     decimalBinarioVetor(decimal1, binario1, TAM_BINARIO);
     binario1[TAM_BINARIO-1] = 0;
@@ -16,6 +16,7 @@ int multiplicacaoBinario(int decimal1, int decimal2, int *produto){
     binario2[TAM_BINARIO-1] = 0;
 
     while(posicao != 0){
+        printf("\n----------------- CICLO %d ------------------\n", TAM_BINARIO-posicao);
         printf("\nC = %d | A = ", carry);
         imprimeBinario(aux, TAM_BINARIO-1);
         printf(" | Q = ");
@@ -30,6 +31,10 @@ int multiplicacaoBinario(int decimal1, int decimal2, int *produto){
             somaBinario(binarioVetorDecimal(aux, TAM_BINARIO), binarioVetorDecimal(binario2, TAM_BINARIO), aux);
             printf("\nC = %d | A = ", carry);
             imprimeBinario(aux, TAM_BINARIO-1);
+            printf(" | Q = ");
+            imprimeBinario(binario1, TAM_BINARIO-1);
+            printf(" | M = ");
+            imprimeBinario(binario2, TAM_BINARIO-1);
         }
         for(int i = 0; i < TAM_BINARIO-1; i++){
             binario1[i] = binario1[i+1];
@@ -41,6 +46,7 @@ int multiplicacaoBinario(int decimal1, int decimal2, int *produto){
         aux[TAM_BINARIO-2] = carry;
         carry = 0;
         posicao--;
+        printf("\n---------------------------------------------\n", posicao+1);
     }
 
     for(int i = 0; i < TAM_BINARIO*2; i++){
@@ -56,9 +62,6 @@ int multiplicacaoBinario(int decimal1, int decimal2, int *produto){
     }else{
         produto[TAM_BINARIO*2-1] = 0;
     }
-
-    printf("\nResultado ->>>>>>>>>>>>>>>>: ");
-    imprimeBinario(produto, TAM_BINARIO*2);
 
     return binarioVetorDecimal(produto, TAM_BINARIO*2);
 }

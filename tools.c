@@ -84,7 +84,7 @@ int copiaBinario(int *binario1, int *binario2){
 
 int imprimeBinario(int *binario, int tamanho){
     for(int i = tamanho-1; i >= 0; i--){
-        printf("%d", binario[i]);
+        printf(" %d", binario[i]);
     }
 }
 
@@ -93,7 +93,7 @@ int imprimeBinarioSM(int *binario, int tamanho){
         if(i == tamanho-1){
             printf("(%d)", binario[i]);
         }else{
-            printf("%d", binario[i]);
+            printf(" %d", binario[i]);
         }
     }
 }

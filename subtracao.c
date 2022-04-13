@@ -6,7 +6,6 @@
 int subtracaoBinario(int decimal1, int decimal2, int *subtracao){
     int binario1[TAM_BINARIO] = {0};
     int binario2[TAM_BINARIO] = {0};
-    int carryVet[TAM_BINARIO] = {0};
     zerarBinario(subtracao, TAM_BINARIO);
     int resto = 0;
     int posicao = 0;
@@ -14,7 +13,7 @@ int subtracaoBinario(int decimal1, int decimal2, int *subtracao){
 
     if((decimal1 < 0 && decimal2 < 0) || (decimal1 > 0 && decimal2 > 0)){
 
-        printf("\nSubtracao entre valores de sinais iguais %d e %d (Subtrai o maior do menor e mantem o sinal do maior)\n", decimal1, decimal2);
+        printf("\nSubtracao entre valores de sinais iguais %d e %d (Subtrai o maior do menor e mantem o sinal do maior)\n\n", decimal1, decimal2);
 
         int maior = decimal1;
         int menor = decimal2;
@@ -46,27 +45,20 @@ int subtracaoBinario(int decimal1, int decimal2, int *subtracao){
             }else{
                 carry = 0;
             }
-            carryVet[i+1] = carry*-1;
         }
 
         imprimeBinarioSM(binario1, TAM_BINARIO);
         printf(" -> Binario 1\n - \n");
         imprimeBinarioSM(binario2, TAM_BINARIO);
         printf(" -> Binario 2\n   ");
-        imprimeBinario(carryVet, TAM_BINARIO-1);
-        printf(" -> Carry");
         printf("\n -------------------------\n");
         imprimeBinarioSM(subtracao, TAM_BINARIO);
-
-        if(carryVet[TAM_BINARIO-1] != 0){
-            printf("\n\nUnderflow");
-        }
         
         return binarioVetorDecimal(subtracao, TAM_BINARIO);
 
     }else{
 
-        printf("\nSubtracao entre valores de sinais diferentes %d e %d (Soma os modulos e mantem o sinal do primeiro)\n", decimal1, decimal2);
+        printf("\nSubtracao entre valores de sinais diferentes %d e %d (Soma os modulos e mantem o sinal do primeiro)\n\n", decimal1, decimal2);
 
         int maior = decimal1;
         int menor = decimal2;

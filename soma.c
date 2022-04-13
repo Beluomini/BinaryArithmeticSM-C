@@ -13,10 +13,11 @@ int somaBinario(int decimal1, int decimal2, int *soma){
 
     if((decimal1 <= 0 && decimal2 <= 0) || (decimal1 >= 0 && decimal2 >= 0)){
 
-        printf("\nSoma entre valores do mesmo sinal %d e %d (soma e mantem o sinal)\n", decimal1, decimal2);
+        printf("\nSoma entre valores do mesmo sinal %d e %d (soma e mantem o sinal)\n\n", decimal1, decimal2);
         
         decimalBinarioVetor(decimal1, binario1, TAM_BINARIO);
         decimalBinarioVetor(decimal2, binario2, TAM_BINARIO);
+
 
         for(int i = 0; i <= TAM_BINARIO-1; i++){
             soma[i] = carry + binario1[i] + binario2[i];
@@ -29,15 +30,15 @@ int somaBinario(int decimal1, int decimal2, int *soma){
             }else{
                 carry = 0;
             }
-            carryVet[i+1] = carry;
+            carryVet[i] = carry;
         }
-        printf("   ");
+        printf(" ");
         imprimeBinario(carryVet, TAM_BINARIO-1);
-        printf(" -> Carry\n");
+        printf("  -> Carry\n");
         imprimeBinarioSM(binario1, TAM_BINARIO);
         printf(" -> Binario 1\n + \n");
         imprimeBinarioSM(binario2, TAM_BINARIO);
-        printf(" -> Binario 2\n -------------------------\n");
+        printf(" -> Binario 2\n --------------------------------\n");
         imprimeBinarioSM(soma, TAM_BINARIO);
 
         if(carryVet[TAM_BINARIO-1] == 1){
@@ -50,7 +51,7 @@ int somaBinario(int decimal1, int decimal2, int *soma){
 
     }else{
 
-        printf("\nSoma entre valores de sinal diferente %d e %d (subtrai os modulos e mantem o sinal do maior)\n", decimal1, decimal2);
+        printf("\nSoma entre valores de sinal diferente %d e %d (subtrai os modulos e mantem o sinal do maior)\n\n", decimal1, decimal2);
         if(abs(decimal1) < abs(decimal2)){ // verifica quem tem maior magnitude
             if(decimal2 < 0){
                 decimal2 = decimal2 * -1;
